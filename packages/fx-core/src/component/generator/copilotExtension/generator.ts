@@ -22,6 +22,7 @@ import {
   ApiAuthOptions,
   ApiPluginStartOptions,
   CapabilityOptions,
+  DeclarativeCopilotTypeOptions,
   ProgrammingLanguage,
   QuestionNames,
 } from "../../../question";
@@ -98,6 +99,8 @@ export class CopilotExtensionGenerator extends DefaultTemplateGenerator {
     let templateName;
     const apiPluginFromScratch =
       inputs[QuestionNames.ApiPluginType] === ApiPluginStartOptions.newApi().id;
+    const isDeclarativeCopilotWithAddInSkills =
+      inputs[QuestionNames.WithPlugin] === DeclarativeCopilotTypeOptions.officeAddInSkills().id;
     if (apiPluginFromScratch) {
       const authTemplateMap = {
         [ApiAuthOptions.apiKey().id]: TemplateNames.ApiPluginFromScratchBearer,
@@ -105,6 +108,8 @@ export class CopilotExtensionGenerator extends DefaultTemplateGenerator {
         [ApiAuthOptions.oauth().id]: TemplateNames.ApiPluginFromScratchOAuth,
       };
       templateName = authTemplateMap[auth] || TemplateNames.ApiPluginFromScratch;
+    } else if (isDeclarativeCopilotWithAddInSkills) {
+      templateName = TemplateNames.DeclarativeCopilotWithAddInSkills;
     } else {
       templateName = TemplateNames.BasicGpt;
     }

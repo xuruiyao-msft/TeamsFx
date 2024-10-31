@@ -1593,6 +1593,7 @@ export function capabilitySubTree(): IQTreeNode {
           return (
             (!!inputs[QuestionNames.Capabilities] &&
               inputs[QuestionNames.WithPlugin] !== DeclarativeCopilotTypeOptions.noPlugin().id &&
+              inputs[QuestionNames.WithPlugin] !== DeclarativeCopilotTypeOptions.officeAddInSkills().id &&
               inputs[QuestionNames.ApiPluginType] !== ApiPluginStartOptions.apiSpec().id &&
               inputs[QuestionNames.ApiPluginType] !== ApiPluginStartOptions.existingPlugin().id &&
               inputs[QuestionNames.MeArchitectureType] !== MeArchitectureOptions.apiSpec().id &&

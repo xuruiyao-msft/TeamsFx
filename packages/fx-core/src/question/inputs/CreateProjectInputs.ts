@@ -60,7 +60,7 @@ export interface CreateProjectInputs extends Inputs {
   /** @description Architecture of Search Based Message Extension */
   "me-architecture"?: "new-api" | "api-spec" | "bot-plugin" | "bot";
   /** @description Create Declarative Agent */
-  "with-plugin"?: "no" | "yes";
+  "with-plugin"?: "no" | "yes" | "office-addin-skills";
   /** @description Create API Plugin */
   "api-plugin-type"?: "new-api" | "api-spec" | "existing-plugin";
   /** @description Import Manifest File */

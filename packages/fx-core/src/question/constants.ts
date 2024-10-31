@@ -1246,9 +1246,20 @@ export class DeclarativeCopilotTypeOptions {
       detail: getLocalizedString("core.createProjectQuestion.addPlugin.detail"),
     };
   }
+  static officeAddInSkills(): OptionItem {
+    return {
+      id: "office-addin-skills",
+      label: getLocalizedString("core.createProjectQuestion.officeAddInSkills.label"),
+      detail: getLocalizedString("core.createProjectQuestion.officeAddInSkills.detail"),
+    };
+  }
 
   static all(): OptionItem[] {
-    return [DeclarativeCopilotTypeOptions.noPlugin(), DeclarativeCopilotTypeOptions.withPlugin()];
+    return [
+      DeclarativeCopilotTypeOptions.noPlugin(),
+      DeclarativeCopilotTypeOptions.withPlugin(),
+      DeclarativeCopilotTypeOptions.officeAddInSkills(),
+    ];
   }
 }
 

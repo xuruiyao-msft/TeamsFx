@@ -57,6 +57,7 @@ export enum TemplateNames {
   CustomCopilotAssistantNew = "custom-copilot-assistant-new",
   CustomCopilotAssistantAssistantsApi = "custom-copilot-assistant-assistants-api",
   BasicGpt = "copilot-gpt-basic",
+  DeclarativeCopilotWithAddInSkills = "declarative-agent-with-office-addin-skills",
   GptWithPluginFromScratch = "copilot-gpt-from-scratch-plugin",
 }
 
