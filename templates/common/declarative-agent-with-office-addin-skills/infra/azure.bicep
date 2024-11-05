@@ -14,7 +14,7 @@ resource swa 'Microsoft.Web/staticSites@2022-09-01' = {
     name: staticWebAppSku
     tier: staticWebAppSku
   }
-  properties:{}
+  properties: {}
 }
 
 var siteDomain = swa.properties.defaultHostname

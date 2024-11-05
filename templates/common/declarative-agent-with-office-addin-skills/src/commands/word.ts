@@ -3,20 +3,13 @@
  * See LICENSE in the project root for license information.
  */
 
-/* global Office */
-
-Office.onReady((info) => {
-  if (info.host === Office.HostType.Word) {
-    // Register the function with Office.
-    Office.actions.associate("action", actionWord);
-  }
-});
+/* global Office Word console */
 
 /**
- * Shows a notification when the add-in command is executed.
+ * Insert a blue paragraph in word when the add-in command is executed.
  * @param event
  */
-async function actionWord(event: Office.AddinCommands.Event) {
+export async function insertBlueParagraphInWord(event: Office.AddinCommands.Event) {
   try {
     await Word.run(async (context) => {
       const paragraph = context.document.body.insertParagraph("Hello World", Word.InsertLocation.end);

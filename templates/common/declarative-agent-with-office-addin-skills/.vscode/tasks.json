@@ -35,7 +35,7 @@
     {
       "label": "Debug: Excel Desktop",
       "type": "npm",
-      "script": "start -- --app excel",
+      "script": "start:desktop:excel",
       "presentation": {
         "clear": true,
         "panel": "dedicated"
@@ -48,7 +48,7 @@
     {
       "label": "Debug: Outlook Desktop",
       "type": "npm",
-      "script": "start -- --app outlook",
+      "script": "start:desktop:outlook",
       "presentation": {
         "clear": true,
         "panel": "dedicated"
@@ -61,7 +61,7 @@
     {
       "label": "Debug: PowerPoint Desktop",
       "type": "npm",
-      "script": "start -- --app powerpoint",
+      "script": "start:desktop:powerpoint",
       "presentation": {
         "clear": true,
         "panel": "dedicated"
@@ -74,7 +74,7 @@
     {
       "label": "Debug: Word Desktop",
       "type": "npm",
-      "script": "start -- --app word",
+      "script": "start:desktop:word",
       "presentation": {
         "clear": true,
         "panel": "dedicated"

@@ -1,15 +1,15 @@
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
-    "id": "${{TEAMS_APP_ID}}",
-    "manifestVersion": "1.19",
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
+    "id": "97f891fb-3899-49c8-bbc1-519b4904cd5e",
+    "manifestVersion": "devPreview",
     "version": "1.0.0",
     "name": {
-        "short": "{{appName}}${{APP_NAME_SUFFIX}}",
-        "full": "Full name for {{appName}}"
+        "short": "DeclarativeAgent_AddInSkills",
+        "full": "Declarative Agent With Office Add in Skills"
     },
     "description": {
-        "short": "Short description for {{appName}}",
-        "full": "Full description for {{appName}}"
+        "short": "A template to get started.",
+        "full": "This is the template to get started."
     },
     "developer": {
         "name": "Contoso",
@@ -79,14 +79,6 @@
                     ]
                 },
                 {
-                    "requirements": {
-                        "capabilities": [
-                            {
-                                "name": "AddinCommands",
-                                "minVersion": "1.1"
-                            }
-                        ]
-                    },
                     "id": "TaskPaneRuntime",
                     "type": "general",
                     "code": {
@@ -103,6 +95,14 @@
                     ]
                 },
                 {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ]
+                    },
                     "id": "CommandsRuntime",
                     "type": "general",
                     "code": {
@@ -113,8 +113,7 @@
                     "actions": [
                         {
                             "id": "action",
-                            "type": "executeFunction",
-                            "displayName": "action"
+                            "type": "executeFunction"
                         }
                     ]
                 }
@@ -282,19 +281,5 @@
                 }
             ]
         }
-    ],
-    "composeExtensions": [],
-    "permissions": [
-        "identity",
-        "messageTeamMembers"
-    ],
-    "copilotAgents": {
-        "declarativeAgents": [            
-            {
-                "id": "declarativeAgent",
-                "file": "declarativeAgent.json"
-            }
-        ]
-    },
-    "validDomains": []
+    ]
 }

@@ -3,19 +3,13 @@
  * See LICENSE in the project root for license information.
  */
 
-/* global Office */
+/* global Office Excel console */
 
-Office.onReady((info) => {
-  if (info.host === Office.HostType.Excel) {
-    // Register the function with Office.
-    Office.actions.associate("action", actionExcel);
-  }
-});
 /**
- * Shows a notification when the add-in command is executed.
+ * Set range color to selected range in excel when the add-in command is executed.
  * @param event
  */
-async function actionExcel(event: Office.AddinCommands.Event) {
+export async function setRangeColorInExcel(event: Office.AddinCommands.Event) {
   try {
     await Excel.run(async (context) => {
       const range = context.workbook.getSelectedRange();
