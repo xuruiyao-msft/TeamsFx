@@ -4,12 +4,12 @@
     "manifestVersion": "devPreview",
     "version": "1.0.0",
     "name": {
-        "short": "DeclarativeAgent_AddInSkills",
-        "full": "Declarative Agent With Office Add in Skills"
+        "short": "{{appName}}",
+        "full": "Full name for {{appName}}"
     },
     "description": {
-        "short": "A template to get started.",
-        "full": "This is the template to get started."
+        "short": "Short description for {{appName}}",
+        "full": "Full description for {{appName}}"
     },
     "developer": {
         "name": "Contoso",

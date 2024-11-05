@@ -1,7 +1,7 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.0/schema.json",
     "version": "v1.0",
-    "name": "DeclarativeAgent_AddInSkills",
+    "name": "{{appName}}",
     "description": "Declarative agent with Office Addin Skills created with Teams Toolkit",
     "instructions": "$[file('instruction.txt')]"
 }

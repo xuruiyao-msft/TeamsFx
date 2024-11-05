@@ -14,12 +14,12 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "DeclarativeAgent_AddInSkills",
-        "full": "Full name for DeclarativeAgent_AddInSkills"
+        "short": "{{appName}}",
+        "full": "Full name for {{appName}}"
     },
     "description": {
-        "short": "Short description for DeclarativeAgent_AddInSkills",
-        "full": "Full description for DeclarativeAgent_AddInSkills"
+        "short": "Short description for {{appName}}",
+        "full": "Full description for {{appName}}"
     },
     "accentColor": "#FFFFFF",
     "composeExtensions": [],

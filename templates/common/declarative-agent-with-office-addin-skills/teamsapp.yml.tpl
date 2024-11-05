@@ -45,7 +45,7 @@ provision:
   - uses: teamsApp/create
     with:
       # Teams app name
-      name: DeclarativeAgent_AddInSkills${{APP_NAME_SUFFIX}}
+      name: {{appName}}
     # Write the information of created resources into environment file for
     # the specified environment variable(s).
     writeToEnvironmentFile:
