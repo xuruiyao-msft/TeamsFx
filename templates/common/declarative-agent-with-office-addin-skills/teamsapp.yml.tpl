@@ -7,40 +7,6 @@ environmentFolderPath: ./env
 
 # Triggered when 'teamsapp provision' is executed
 provision:
-  - uses: arm/deploy # Deploy given ARM templates parallelly.
-    with:
-      # AZURE_SUBSCRIPTION_ID is a built-in environment variable,
-      # if its value is empty, TeamsFx will prompt you to select a subscription.
-      # Referencing other environment variables with empty values
-      # will skip the subscription selection prompt.
-      subscriptionId: ${{AZURE_SUBSCRIPTION_ID}}
-      # AZURE_RESOURCE_GROUP_NAME is a built-in environment variable,
-      # if its value is empty, TeamsFx will prompt you to select or create one
-      # resource group.
-      # Referencing other environment variables with empty values
-      # will skip the resource group selection prompt.
-      resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}}
-      templates:
-        - path: ./infra/azure.bicep # Relative path to this file
-          # Relative path to this yaml file.
-          # Placeholders will be replaced with corresponding environment
-          # variable before ARM deployment.
-          parameters: ./infra/azure.parameters.json
-          # Required when deploying ARM template
-          deploymentName: Create-resources-for-tab
-      # Teams Toolkit will download this bicep CLI version from github for you,
-      # will use bicep CLI in PATH if you remove this config.
-      bicepCliVersion: v0.9.1
-
-  # Get the deployment token from Azure Static Web Apps
-  - uses: azureStaticWebApps/getDeploymentToken
-    with:
-      resourceId: ${{AZURE_STATIC_WEB_APPS_RESOURCE_ID}}
-    # Save deployment token to the environment file for the deployment action
-    writeToEnvironmentFile:
-      deploymentToken: SECRET_TAB_SWA_DEPLOYMENT_TOKEN
-
-
   # Creates a Teams app
   - uses: teamsApp/create
     with:
@@ -83,43 +49,17 @@ provision:
 
 # Triggered when 'teamsapp deploy' is executed
 deploy:
-  # Run npm command
-  - uses: cli/runNpmCommand
-    name: install dependencies
-    with:
-      args: install
-  - uses: cli/runNpmCommand
-    name: build app
-    with:
-      args: run build --if-present
-  # Azure Static Web Apps needs index.html
-  - uses: cli/runNpxCommand
-    with:
-      args: shx touch dist/index.html
-  # Deploy bits to Azure Static Web Apps
-  - uses: cli/runNpxCommand
-    name: deploy to Azure Static Web Apps
-    with:
-      args: '@azure/static-web-apps-cli deploy ./dist -d
-        ${{SECRET_TAB_SWA_DEPLOYMENT_TOKEN}} --env production'
-  # replace the ADD-IN-ENDPOINT in the webpack.config.js
+  # yarn run dev-server
+  # - uses: script
+  #   name: start dev-server
+  #   with:
+  #     run: cd c:\office\src & init.cmd & cd c:\office\src\sdx\officecopilot\packages\word & yarn run dev-server|findstr "compiled successfully"&&r c2r w
+  #     workingDirectory: c:\office\src\sdx\officecopilot\packages\word
+  #     shell: C:\Windows\System32\cmd.exe
   - uses: script
+    name: launch Word
     with:
-      run: sed -i 's/^.*const urlProd.*$/const urlProd = "https:\/\/'$(grep -i "ADDIN_ENDPOINT=" ./env/.env.dev | awk -F 'https:\\/\\/' '{print $2}')'\/";/g' webpack.config.js | (rm -r ./dist || true)
-      workingDirectory: ./
-      shell: C:/Program Files/Git/git-bash.exe
-      timeout: 100000 # timeout in ms
-  # Run npm run build
-  - uses: cli/runNpmCommand
-    name: build app
-    with:
-      args: run build --if-present
-  # sideload the add-in to wxp
-  - uses: script
-    name: sideload add-in
-    with:
-      run: npx office-addin-dev-settings sideload ./dist/manifest.json --app Word
-      workingDirectory: ./
-      shell: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-      timeout: 100000
+      run: r c2r w
+      workingDirectory: c:\office\src\
+      shell: C:\Windows\System32\cmd.exe
 projectId: ce559f07-509d-4f3e-a2a5-1d28037d231e
